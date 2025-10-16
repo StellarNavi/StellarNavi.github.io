@@ -8,7 +8,18 @@ Hello 👋 I'm Audrey and I am wrapping up my bachelors of science in Computer S
 ### Code Review
 Here I discuss the code behind the web app, the structure of the database and the planned development of enhancements.
 
-[![Watch the video]()](https://www.youtube.com/watch?v=fyCA9lOTE8Y)
+[![Watch the video]](https://www.youtube.com/watch?v=fyCA9lOTE8Y)
+
+<div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; max-width:100%;">
+  <iframe
+    src="https://www.youtube-nocookie.com/embed/fyCA9lOTE8Y"
+    title="YouTube video player"
+    style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+  </iframe>
+</div>
 
 
 ### Program-wide self-assessment
