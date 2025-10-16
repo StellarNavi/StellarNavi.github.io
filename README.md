@@ -1,13 +1,11 @@
-# StellarNavi.github.io
-
 Hello 👋 I'm Audrey and I am wrapping up my bachelors of science in Computer Science with a concentration in Data Analytics. I'm happy to share my custom, full-stack web application titled <a href="https://www.mymessiertracker.com/" target="_blank" rel="noopener noreferrer">My Messier Tracker</a> as proof of my skills in the field of computer science. 
 
 #### What is MyMessierTracker?
 MyMessierTracker is a full-stack Flask + PostgreSQL web app that lets you catalog your Messier captures, upload a photo, tag the object, add notes, and track progress across all 110 objects with clean analytics and visuals. It also includes real catalog data (object types, RA/Dec location, magnitude) with rarity scores and progress metrics. It aims to help users track and journal their Messier-object observations while inspiring astrophotographers to continue gazing upward and capturing the wonders of the night sky.
 
----
 
-### Code Review
+## Code Review
+---
 Here I discuss the code behind the web app, the structure of the database and the planned development of enhancements.
 
 <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; max-width:100%;">
@@ -24,10 +22,11 @@ Here I discuss the code behind the web app, the structure of the database and th
 You can find my original code files here and the final enhancements made
 
 ## Personal Self-Assessment
+---
 
 
-### Program-wide self-assessment
-
+## Program-wide self-assessment
+---
 * Collaborating in a team environment: Used feature branches (enh1/2/3 → dev → main), performed merges with conflict resolution, and documented changes for review—habits that translate directly to team workflows.
 * Communicating with stakeholders: Explain requirements and trade-offs in non-jargon terms (e.g., why a normalized schema + views beats ad-hoc queries; why secure uploads matter) and maintain concise READMEs/runbooks.
 * Data structures & algorithms: Applied indexing strategies, window functions, and efficient server-side computations to keep UI snappy and metrics correct at scale.
