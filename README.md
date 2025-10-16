@@ -5,6 +5,12 @@
 ## Personal Self-Assessment
 Hello 👋 I'm Audrey and I am wrapping up my bachelors of science in Computer Science with a concentration in Data Analytics. I'm happy to share my custom, full-stack web application titled <a href="https://www.mymessiertracker.com/" target="_blank" rel="noopener noreferrer">My Messier Tracker</a> as proof of my skills in the field of computer science. 
 
+### Code Review
+Here I discuss the code behind the web app, the structure of the database and the planned development of enhancements.
+
+[![Watch the video]()](https://www.youtube.com/watch?v=fyCA9lOTE8Y)
+
+
 ### Program-wide self-assessment
 
 * Collaborating in a team environment: Used feature branches (enh1/2/3 → dev → main), performed merges with conflict resolution, and documented changes for review—habits that translate directly to team workflows.
