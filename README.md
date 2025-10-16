@@ -1,14 +1,12 @@
 # StellarNavi.github.io
 
-
-
-## Personal Self-Assessment
 Hello 👋 I'm Audrey and I am wrapping up my bachelors of science in Computer Science with a concentration in Data Analytics. I'm happy to share my custom, full-stack web application titled <a href="https://www.mymessiertracker.com/" target="_blank" rel="noopener noreferrer">My Messier Tracker</a> as proof of my skills in the field of computer science. 
+
+#### What is MyMessierTracker?
+MyMessierTracker is a full-stack Flask + PostgreSQL web app that lets you catalog your Messier captures—upload a photo, tag the object, add notes, and track progress across all 110 objects with clean analytics and visuals. It also includes real catalog data (types, RA/Dec, magnitude) with rarity scores and progress metrics.
 
 ### Code Review
 Here I discuss the code behind the web app, the structure of the database and the planned development of enhancements.
-
-[![Watch the video]](https://www.youtube.com/watch?v=fyCA9lOTE8Y)
 
 <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; max-width:100%;">
   <iframe
@@ -20,6 +18,10 @@ Here I discuss the code behind the web app, the structure of the database and th
     allowfullscreen>
   </iframe>
 </div>
+
+You can find my original code files here and the final enhancements made
+
+## Personal Self-Assessment
 
 
 ### Program-wide self-assessment
