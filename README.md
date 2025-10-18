@@ -42,7 +42,7 @@ Here I discuss the code behind an early version of the web app, the structure of
     Original Code Files
   </a>
 
-  <a href="https://github.com/StellarNavi/StellarNavi.github.io/blob/main/Updated%20Files"
+  <a href="https://github.com/StellarNavi/StellarNavi.github.io/tree/main/Updated%20Files"
      target="_blank" rel="noopener"
      style="display:inline-flex;align-items:center;justify-content:center;
             padding:10px 16px;border-radius:8px;border:1px solid #444;
