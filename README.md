@@ -29,22 +29,22 @@ Here I discuss the code behind the web app, the structure of the database and th
 </div>
 
 <style>
-.section { margin-top: 24px; }      /* space before each section */
-.divider { margin: 24px 0; }        /* extra space around the line */
+.section { margin-top: 24px; }     
+.divider { margin: 24px 0; }       
 </style>
 
 You can find my original code and enhanced code files here.
 
-<div style="display:flex;gap:12px;flex-wrap:wrap">
+<div style="display:flex;text-align:center;gap:12px;flex-wrap:wrap">
   <a href="https://[github.com/<you>/<repo>/tree/main/path/to/folderA](https://github.com/StellarNavi/StellarNavi.github.io/blob/main/Original%20Code%20Files)"
      target="_blank" rel="noopener"
      style="padding:10px 16px;border-radius:8px;border:1px solid #444;text-decoration:none;font-weight:600;background:#1f2328;color:#fff">
-    Folder A
+    Original Code Files
   </a>
   <a href="https://[github.com/<you>/<repo>/tree/main/path/to/folderB](https://github.com/StellarNavi/StellarNavi.github.io/blob/main/Updated%20Files)"
      target="_blank" rel="noopener"
      style="padding:10px 16px;border-radius:8px;border:1px solid #444;text-decoration:none;font-weight:600;background:#1f2328;color:#fff">
-    Folder B
+    Enhanced Code Files
   </a>
 </div>
 
