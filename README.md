@@ -15,7 +15,7 @@ MyMessierTracker is a full-stack Flask + PostgreSQL web app that lets you catalo
 
 
 ## Code Review
-Here I discuss the code behind the web app, the structure of the database and the planned development of enhancements.
+Here I discuss the code behind an early version of the web app, the structure of the database and the planned development of enhancements. Below you can also find the code files for this earlier version as well as the code files after the enhancements were published.
 
 <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; max-width:100%;">
   <iframe
@@ -34,7 +34,7 @@ Here I discuss the code behind the web app, the structure of the database and th
 
 <div class="d-flex justify-content-center gap-2 flex-wrap"
      style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;width:100%;margin:16px 0;">
-  <a href="https://github.com/StellarNavi/StellarNavi.github.io/blob/main/Original%20Code%20Files"
+  <a href="https://github.com/StellarNavi/StellarNavi.github.io/tree/main/Original%20Code%20Files"
      target="_blank" rel="noopener"
      style="display:inline-flex;align-items:center;justify-content:center;
             padding:10px 16px;border-radius:8px;border:1px solid #444;
