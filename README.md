@@ -13,6 +13,12 @@
 #### What is MyMessierTracker?
 MyMessierTracker is a full-stack Flask + PostgreSQL web app that lets you catalog your Messier captures, upload a photo, tag the object, add notes, and track progress across all 110 objects with clean analytics and visuals. It also includes real catalog data (object types, RA/Dec location, magnitude) with rarity scores and progress metrics. It aims to help users track and journal their Messier-object observations while inspiring astrophotographers to continue gazing upward and capturing the wonders of the night sky.
 
+You can access <a href="https://mymessiertracker.com" target="_blank" rel="noopener"><strong>My Messier Tracker</strong></a> by creating your own account or exploring it with some data already populated for your convinience by using the demo account creditials below:
+
+<p align="center">
+UN: demo@pending.com
+PW: 123 
+</p>
 
 ## Code Review
 Here I discuss the code behind an early version of the web app, the structure of the database and the planned development of enhancements. Below you can also find the code files for this earlier version as well as the code files after the enhancements were published.
