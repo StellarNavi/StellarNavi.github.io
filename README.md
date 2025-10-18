@@ -19,7 +19,23 @@ Here I discuss the code behind the web app, the structure of the database and th
   </iframe>
 </div>
 
-You can find my original code files here and the final enhancements made
+
+
+You can find my original code and enhanced code files here.
+/* buttons to navigate to code files */
+<div style="display:flex;gap:12px;flex-wrap:wrap">
+  <a href="https://[github.com/<you>/<repo>/tree/main/path/to/folderA](https://github.com/StellarNavi/StellarNavi.github.io/blob/main/Original%20Code%20Files)"
+     target="_blank" rel="noopener"
+     style="padding:10px 16px;border-radius:8px;border:1px solid #444;text-decoration:none;font-weight:600;background:#1f2328;color:#fff">
+    Folder A
+  </a>
+  <a href="https://[github.com/<you>/<repo>/tree/main/path/to/folderB](https://github.com/StellarNavi/StellarNavi.github.io/blob/main/Updated%20Files)"
+     target="_blank" rel="noopener"
+     style="padding:10px 16px;border-radius:8px;border:1px solid #444;text-decoration:none;font-weight:600;background:#1f2328;color:#fff">
+    Folder B
+  </a>
+</div>
+
 
 ## Personal Self-Assessment
 ---
