@@ -54,11 +54,11 @@ Here I discuss the code behind an early version of the web app, the structure of
 
 
 ## Program-wide self-assessment
-* Collaborating in a team environment: Used feature branches (enh1/2/3 → dev → main), performed merges with conflict resolution, and documented changes for review—habits that translate directly to team workflows.
-* Communicating with stakeholders: Explain requirements and trade-offs in non-jargon terms (e.g., why a normalized schema + views beats ad-hoc queries; why secure uploads matter) and maintain concise READMEs/runbooks.
-* Data structures & algorithms: Applied indexing strategies, window functions, and efficient server-side computations to keep UI snappy and metrics correct at scale.
-* Software engineering & database: Produced a maintainable Flask codebase, reproducible Docker setup, migration/seed SQL, and templated UI—demonstrating full-stack competency.
-* Security mindset: Practiced defense-in-depth (hashed credentials, validated inputs, safe file paths, secret management) and considered abuse cases (path traversal, CSRF, weak passwords).
+* Collaborating in a team environment: Used feature branches (enh1/2/3 → dev → main), performed merges with conflict resolution, and documented changes for review, these are all habits that translate directly into a real-world team workflows.
+* Communicating with stakeholders: Explain requirements and trade-offs in a way that both technical and non-technical audiences can follow (examples: why a normalized schema + views are more efficient than ad-hoc queries, why secure uploads matter and practiced maintaining concise READMEs and other documentation).
+* Data structures & algorithms: Applied indexing strategies, window functions, choosing the best algorithm for the need and implementing efficient server-side computations to keep UIs snappy and real-time metrics accurate at scale.
+* Software engineering & database: Produced an easily maintainable Flask codebase, reproducible Postgres database structure with easilly seedable SQL, modularized code with a  templated UI - demonstrating full-stack competency.
+* Security mindset: Practiced a security mindset throughout the entire process with strongly hashed credentials, validated inputs, safe file paths, secret management and considered abuse cases such as path traversal, and CSRF (cross-site request forgery) through requiring the users passwords at destructive action requests even thorugh authentication during the current session is already active.
 
 ### How the artifact enhancements fit together
   I chose to develop and enhance a singluar project to show how these topics all fit together in a project as a whole.
