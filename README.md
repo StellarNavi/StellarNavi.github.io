@@ -46,6 +46,27 @@ You can find my original code and enhanced code files here.
 </div>
 
 
+<div class="d-flex justify-content-center gap-2 flex-wrap"
+     style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;width:100%;margin:16px 0;">
+  <a href="https://github.com/StellarNavi/StellarNavi.github.io/blob/main/Original%20Code%20Files"
+     target="_blank" rel="noopener"
+     style="display:inline-flex;align-items:center;justify-content:center;
+            padding:10px 16px;border-radius:8px;border:1px solid #444;
+            text-decoration:none;font-weight:600;background:#1f2328;color:#fff">
+    Original Code Files
+  </a>
+
+  <a href="https://github.com/StellarNavi/StellarNavi.github.io/blob/main/Updated%20Files"
+     target="_blank" rel="noopener"
+     style="display:inline-flex;align-items:center;justify-content:center;
+            padding:10px 16px;border-radius:8px;border:1px solid #444;
+            text-decoration:none;font-weight:600;background:#1f2328;color:#fff">
+    Enhanced Code Files
+  </a>
+</div>
+
+
+
 ## Program-wide self-assessment
 * Collaborating in a team environment: Used feature branches (enh1/2/3 → dev → main), performed merges with conflict resolution, and documented changes for review—habits that translate directly to team workflows.
 * Communicating with stakeholders: Explain requirements and trade-offs in non-jargon terms (e.g., why a normalized schema + views beats ad-hoc queries; why secure uploads matter) and maintain concise READMEs/runbooks.
