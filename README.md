@@ -150,7 +150,7 @@ def account_delete():
 </p>
 
 ### Algorithms and Data Structures: Implementing A Rarity Score Metric
-<p>included generating an efficient computation for identifying the object rarity across all journals of all users.</p>
+<p>This enhancement included generating an efficient computation for identifying the object rarity across all journals of all users. Here I focused on data structures and algorithms where I designed an object rarity metric to help encourage users to keep logging their observations. The goal was to make it fun through tooltips to help quickly identify some of the most popular objects that the user has not yet collected as well as reward them in their journal with a star when they have captured something fewer users have. </p>
 
 -	A new database view leveraging indexes and joins was created that computes the rarity of each object in one grouped process over user_object_images and single user counts. This avoids counting per object/N+1 queries in SQL or inefficient loops in Python. This essentially results in \(O(U+I+ M\log M)\) where U indicates the rows in the users table, I as rows in user_object_images and M as the rows in the messier_objects table. Since M is constant at 110, this can simplify to O(U+I) and \(O(1)\) in memory so it’s an efficient, speedy and resource friendly algorithm to compute this rarity metric.
   
