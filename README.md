@@ -1,15 +1,15 @@
 ## Table of Contents
 - [Professional Self-Assessment](#professional-self-assessment)
   - [Demonstrating Professional Competencies](#demonstrating-professional-competencies)
-  - [What is MyMessierTracker?](#what-is-mymessiertracker?)   
+  - [What is MyMessierTracker?](#what-is-mymessiertracker)   
 - [Code Review](#code-review)
 - [Enhancement Narratives](#enhancement-narratives)
-  - [Enhancement 1 — Software Design & Engineering](#software-design-and-engineering:-implementing-account-deletionfunctionality)
+  - [Enhancement 1 — Software Design & Engineering](#software-design-and-engineering:-implementing-account-deletion-functionality)
   - [Enhancement 2 — Algorithms & Data Structures](#algorithms-and-data-structures:-implementing-a-rarity-score-metric)
   - [Enhancement 3 — Databases](#databases:-completecrud-operations)
 - [Thank You](#thank-you)
 
-### Professional Self-Assessment
+## Professional Self-Assessment
 
 <p>Hello 👋 I’m <strong>Audrey Weaver</strong>, and I am completing my <strong>Bachelor of Science in Computer Science</strong> with a concentration in <strong>Data Analytics</strong>. Over the course of this program, I have developed both the technical depth and professional confidence to design, build, troubleshoot, and deliver impactful software solutions.</p>
 
@@ -27,7 +27,7 @@
 * Security mindset: Practiced a security mindset throughout the entire process with strongly hashed credentials, validated inputs, safe file paths and considered abuse cases such as path traversal, and CSRF (cross-site request forgery) through requiring the users passwords at destructive action requests even thorugh authentication during the current session is already active.
 
 #### What is MyMessierTracker?
-MyMessierTracker is a full-stack Flask + PostgreSQL web app that lets you catalog your captures of the Messier DSOs (deep sky objects), upload a photo, tag the object, add notes, and track progress across all 110 objects with clean analytics and visuals. It also includes real catalog data (object types, RA/Dec location, magnitude) with rarity scores and progress metrics. It aims to help users track and journal their Messier-object observations while inspiring astrophotographers to continue gazing upward and capturing the wonders of the night sky. I chose to develop this project to show how these topics all fit together in a singular project as a whole. Together these illustrate a polished product that is secure and trustworthy for managing user data and providing a meaningful and reliable tool within a modern and easy to use interface.
+I chose to develop this project to show how these topics all fit together in a singular project as a whole. Together these illustrate a polished product that is secure for managing user data and providing a meaningful and reliable tool within a modern, easy to use interface. MyMessierTracker is a full-stack Flask + PostgreSQL web app that lets you catalog your captures of the Messier DSOs (deep sky objects), upload a photo, tag the object, add notes, and track progress across all 110 objects with clean analytics and visuals. It also includes real catalog data (object types, RA/Dec location, magnitude) with rarity scores and progress metrics. It aims to help users track and journal their Messier-object observations while inspiring astrophotographers to continue gazing upward and capturing the wonders of the night sky. 
 
 You can access <a href="https://mymessiertracker.com" target="_blank" rel="noopener"><strong>My Messier Tracker</strong></a> by creating your own account or exploring it with some data already populated for your convinience by using the following demo account creditials: EMAIL=demo@pending.com and PW=demo1.
 
@@ -79,7 +79,7 @@ Here I discuss the code behind an early version of the web app, the structure of
 
 - A user can choose to delete account data from their profile menu.
 <p align="center">
-  <img width="319" height="251" alt="image" src="https://github.com/user-attachments/assets/60925572-0c4a-4f4f-a259-751058d9a64c" alt="image" width="360" style="height:auto;" />
+  <img width="319" height="251" alt="image" src="https://github.com/user-attachments/assets/60925572-0c4a-4f4f-a259-751058d9a64c" alt="image" width="300" style="height:auto;" />
 </p>
 
 - Here they will be given a clear warning that this action is final and irreversible. A password is required to confirm this decision.
@@ -152,7 +152,7 @@ def account_delete():
     
 - This process is confirmed to the user once complete.
 <p align="center">
-  <img alt="image" src="https://github.com/user-attachments/assets/8627c18c-56bf-489b-a715-bf1ffdc9f3f6" alt="image" width="360" style="height:auto;"/>
+  <img alt="image" src="https://github.com/user-attachments/assets/8627c18c-56bf-489b-a715-bf1ffdc9f3f6" alt="image" width="380" style="height:auto;"/>
 </p>
 
 ### Algorithms and Data Structures: Implementing A Rarity Score Metric
@@ -227,7 +227,7 @@ capture_next_galaxy = [{
 -	These tooltips were then added to the index.html file and customized to be easily read and understood by the user.
 -	The user can now mouseover every chart on the page to get a list of the ‘Top 3’ objects remaining that are most popular in each category (or overall). This is sorted by most popular descending. *Please note that the values on these tooltips may seem too round and consistent, that is becuase there are not that many usre accounts in the system, but as the user base grows these numbers would start to appear more realistic*.
 <p align="center">
-  <img alt="image" src="https://github.com/user-attachments/assets/85bfba2d-694a-4589-b493-11ddf412e2e2" alt="image" width="360" style="height:auto;"/>
+  <img alt="image" src="https://github.com/user-attachments/assets/85bfba2d-694a-4589-b493-11ddf412e2e2" alt="image" width="420" style="height:auto;"/>
 </p>
 
 - And once the user has captured all objects in a category their mouseover will update to display a ‘Congrats’ message.
@@ -236,14 +236,14 @@ capture_next_galaxy = [{
 </p>
 - Additionally, the user can also see their top most rare objects that they have already captured (with the constraint that the objects rarity is below 50%)
 <p align="center">
-  <img alt="image" src="https://github.com/user-attachments/assets/2a171201-f58a-4fdb-8c49-703e1599dfc4" alt="image" width="360" style="height:auto;"/>
+  <img alt="image" src="https://github.com/user-attachments/assets/2a171201-f58a-4fdb-8c49-703e1599dfc4" alt="image" width="390" style="height:auto;"/>
 </p>
 
 ### Databases: Complete CRUD Operations 
 <p>Here I completed the CRUD operations by adding functionality for the user to edit and remove journal entries. The user could already create records by adding new object entries to their Messier Journal and inserting them into the database and they could also read from the database all of the data they had previously loaded, plus some additional object information. However, they were unable to edit their entries or completely remove an entry until this enhancement. Even though this enhancement was focused on databases, all of my enhancements have had a heavy focus on proper database schema design, scalability and ensuring that the application has secure interactions with the database.</p>
 
 <p align="center">
-  <img alt="image" src="https://github.com/user-attachments/assets/cc55fa41-e142-4c3a-b9f5-c85b03939d25" alt="image" width="360" style="height:auto;"/>
+  <img alt="image" src="https://github.com/user-attachments/assets/cc55fa41-e142-4c3a-b9f5-c85b03939d25" alt="image" width="390" style="height:auto;"/>
 </p>
 
 <p>I selected this enhancement to showcase a secure and computationally efficient mindset when designing and interacting with databases. When a user clicks on either edit or delete buttons, the system collects their user_id and entry_id as variables to be used in the respective queries that will ensure the correct record is being edited or deleted. This setup will also handle in cases where there may be a system error and will not allow any further steps in the process to take place if the entry id cannot be confirmed.</p>
@@ -267,7 +267,7 @@ capture_next_galaxy = [{
 - If the user clicks on the edit icon then the user get the option to edit one or all elements of their original entry
 
 <p align="center">
-  <img alt="image" src="https://github.com/user-attachments/assets/cc55fa41-e142-4c3a-b9f5-c85b03939d25" alt="image" width="360" style="height:auto;"/>
+  <img alt="image" src="https://github.com/user-attachments/assets/cc55fa41-e142-4c3a-b9f5-c85b03939d25" alt="image" width="390" style="height:auto;"/>
 </p>
 
 - One thing I came across here was needing to make sure that I also passed all of the previous data elements that were loaded into the system already instead of blank by default, else when the user when to save their entry but say only updated the date field, the the journal notes would be completely erased as the original notes were not persisting. However, I made sure to make that change and as you can see in the image above these are the previous values pop-up correctly allowing the user to review their data before saving any changes to ensure nothing is lost in the process. Once the user has confirmed their changes, then the system performs an UPDATE statement and brings the user back to their dashboard.
@@ -285,7 +285,7 @@ capture_next_galaxy = [{
 
 - If the user clicks on the delete icon then they are prompted with a warning similar to the user account deletion process for consistency. This ensures that they are well-informed that this action is permanent and irreversible.
 <p align="center">
-  <img alt="image" src="https://github.com/user-attachments/assets/46779a62-2abc-4a6e-b7f8-1c79d8f906aa" alt="image" width="360" style="height:auto;"/>
+  <img alt="image" src="https://github.com/user-attachments/assets/46779a62-2abc-4a6e-b7f8-1c79d8f906aa" alt="image" width="390" style="height:auto;"/>
 </p>
 
 
