@@ -219,7 +219,7 @@ capture_next_galaxy = [{
     for r in cur.fetchall()]
 ```
 -	These tooltips were then added to the index.html file and customized to be easily read and understood by the user.
--	The user can now mouseover every chart on the page to get a list of the ‘Top 3’ objects remaining that are most popular in each category (or overall). This is sorted by most popular descending.
+-	The user can now mouseover every chart on the page to get a list of the ‘Top 3’ objects remaining that are most popular in each category (or overall). This is sorted by most popular descending. *Please note that the values on these tooltips may seem too round and consistent, that is becuase there are not that many usre accounts in the system, but as the user base grows these numbers would start to appear more realistic*.
 <p align="center">
   <img alt="image" src="https://github.com/user-attachments/assets/85bfba2d-694a-4589-b493-11ddf412e2e2" />
 </p>
