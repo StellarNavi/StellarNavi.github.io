@@ -333,4 +333,4 @@ capture_next_galaxy = [{
 <p align="center">
   <img alt="image" src="https://github.com/user-attachments/assets/a1cff61c-3dae-4cf0-897d-ac81f27dd69b" alt="image" width="360" style="height:auto;"/>
 </p>
-Thank you for taking the time to view my project. There is so much more I would like to add to it in the future! If you have any questions or suggestions for future enhancements please feel free to reach out to me at audrey․weaver00(at)live․com.
+Thank you for taking the time to view my project. There is so much more I would like to add to it in the future! If you have any questions or suggestions for future enhancements please feel free to reach out to me at audrey․weaver00@live․com.
