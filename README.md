@@ -76,4 +76,79 @@ Here I discuss the code behind an early version of the web app, the structure of
 
 ## Enhancement Narratives
 
+### Software Design and Engineering: Implementing Account Deletion Functionality
+<p>I implemented a secure “Delete My Account” flow that permanently removes a user and all related data, aligning the app with privacy best practices (<a href="https://gdpr-info.eu/art-17-gdpr/" target="_blank" rel="noopener">Right to Erasure</a>) while keeping the codebase lean and maintainable.</p>
+
+<p>1)	* A user can choose to delete account data from their profile menu.</p>
+<img width="319" height="251" alt="image" src="https://github.com/user-attachments/assets/60925572-0c4a-4f4f-a259-751058d9a64c" />
+<p>	* Here they will be given a clear warning that this action is final and irreversible. A password is required to confirm this decision.</p>
+<img width="862" height="577" alt="image" src="https://github.com/user-attachments/assets/348da4aa-57a4-4b68-97ee-c8774b502628" />
+<p>	* Once they enter their password then all data is deleted in proper order through a cascading SQL structure that also collects all files stored and later deletes those files as well once the database records are removed.</p>
+```python
+# DELETE ACCOUNT PAGE VIEW -------------------------------------------------------------------------
+# wip
+@app.route("/account/delete", methods=["POST"])
+@login_required
+def account_delete():
+    # pulled from delete modal password input
+    pwd = request.form.get("delete_acct_password", "")
+    user_id = str(current_user.id)
+
+    # open db connection
+    conn = get_db_conn()
+    # placeholder for files to collect then delete
+    file_paths = []
+    try:
+        with conn.cursor() as cur:
+            # Verify password
+            cur.execute("""SELECT password_hash 
+                        FROM public.users WHERE id = %s""", (user_id,))
+            row = cur.fetchone()
+            # bad password
+            if not row or not row[0] or not bcrypt.check_password_hash(row[0], pwd):
+                flash("Incorrect password. Please try again.", "danger")
+                session['del_error'] = "Incorrect password. Please try again"
+                return redirect(url_for("dashboard", del_error=1))
+
+            # pass userid & get image paths before deleting from table so they can be removed later
+            cur.execute("SELECT file_path FROM public.images WHERE user_id = %s", (user_id,))
+            img_files = [r[0] for r in cur.fetchall()]
+
+            # delete all user data via cascades generated at schema creation, this setup properly 
+            # manages the removal of records from journal_entries, user_object_images, images tables
+            cur.execute("DELETE FROM public.users WHERE id = %s", (user_id,))
+
+        # commits changes to db
+        conn.commit()
+        
+    # if process failed, let user know and send back to dashboard page and close db connection    
+    except Exception:
+        if conn: conn.rollback()
+        # error then shown in the delete modal setup in index.html
+        return redirect(url_for("dashboard"))
+    finally:
+        if conn:
+            conn.close()
+
+    # then remove actual image files from storage
+    for img in img_files:
+        try:
+            # updated to be platform agnositic for web service deployment
+            # TODO: VALIDATE
+            p = (UPLOAD_DIR / img)
+            if p.exists():
+                p.unlink()
+        except Exception:
+            app.logger.exception("Failed to delete file %s", img)
+
+    # send user to the 'success' screen and logout
+    logout_user()
+    return render_template("post_delete.html") 
+    ```python
+    
+<p>The completion of this process is confirmed to the user once complete. </p>
+<img width="657" height="256" alt="image" src="https://github.com/user-attachments/assets/8627c18c-56bf-489b-a715-bf1ffdc9f3f6" />
+
+
+
 ### The artifact used for all three enhancements that I will discuss here was my custom full-stack web application - 'My Messier Tracker'
