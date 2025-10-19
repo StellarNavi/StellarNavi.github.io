@@ -4,9 +4,9 @@
   - [What is MyMessierTracker?](#what-is-mymessiertracker)   
 - [Code Review](#code-review)
 - [Enhancement Narratives](#enhancement-narratives)
-  - [Enhancement 1 — Software Design & Engineering](#software-design-and-engineering:-implementing-account-deletion-functionality)
-  - [Enhancement 2 — Algorithms & Data Structures](#algorithms-and-data-structures:-implementing-a-rarity-score-metric)
-  - [Enhancement 3 — Databases](#databases:-completecrud-operations)
+  - [Software Design and Engineering: Implementing Account Deletion Functionality](#software-design-and-engineering-implementing-account-deletion-functionality)
+  - [Algorithms and Data Structures: Implementing a Rarity Score Metric](#algorithms-and-data-structures-implementing-a-rarity-score-metric)
+  - [Databases: Complete CRUD Operations](#databases-complete-crud-operations)
 - [Thank You](#thank-you)
 
 ## Professional Self-Assessment
@@ -20,16 +20,16 @@
 <p>My ePortfolio showcases three major enhancements representing the core areas of computer science: <strong>software engineering</strong>, <strong>algorithms and data structures</strong>, and <strong>databases</strong>. Collectively, these artifacts demonstrate my ability to turn well-designed ideas into production-ready applications that deliver value. As I enter the next stage of my career, I bring a passion for data-driven problem solving, continuous learning, and building solutions that balance innovation with security and performance.</p>
 
 ### Demonstrating Professional Competencies
-* Collaborating in a team environment: Used feature branches (enh1/2/3 → dev → main), performed merges with conflict resolution, and documented changes for review, these are all habits that translate directly into a real-world workflows within a team enviornment.
-* Communicating with stakeholders: Explain requirements and trade-offs in a way that both technical and non-technical audiences can follow (examples: why a normalized schema + views are more efficient than ad-hoc queries or costly loops, why security matters at every step and practiced maintaining concise READMEs, code comments and other documentation).
-* Data structures & algorithms: Applied indexing strategies, window functions, choosing the best algorithm for the need and implementing efficient server-side computations to keep UIs snappy and real-time metrics accurate at scale.
-* Software engineering & database: Produced an easily maintainable Flask codebase, reproducible Postgres database structure with easilly seedable SQL and modularized code with a templated user interface that is easy to maintain demonstrating full-stack competency.
-* Security mindset: Practiced a security mindset throughout the entire process with strongly hashed credentials, validated inputs, safe file paths and considered abuse cases such as path traversal, and CSRF (cross-site request forgery) through requiring the users passwords at destructive action requests even thorugh authentication during the current session is already active.
+* **Collaborating in a team environment:** Used feature branches (enh1/2/3 → dev → main), performed merges with conflict resolution, and documented changes for review, these are all habits that translate directly into a real-world workflows within a team environment.
+* **Communicating with stakeholders:** Explain requirements and trade-offs in a way that both technical and non-technical audiences can follow (examples: why a normalized schema + views are more efficient than ad-hoc queries or costly loops, why security matters at every step and practiced maintaining concise READMEs, code comments and other documentation).
+* **Data structures & algorithms:** Applied indexing strategies, window functions, choosing the best algorithm for the need and implementing efficient server-side computations to keep UIs snappy and real-time metrics accurate at scale.
+* **Software engineering & database:** Produced an easily maintainable Flask codebase, reproducible Postgres database structure with easily seedable SQL and modularized code with a templated user interface that is easy to maintain demonstrating full-stack competency.
+* **Security mindset:** Practiced a security mindset throughout the entire process with strongly hashed credentials, validated inputs, safe file paths and considered abuse cases such as path traversal, and CSRF (cross-site request forgery) through requiring the users passwords at destructive action requests even thorugh authentication during the current session is already active.
 
 #### What is MyMessierTracker?
-I chose to develop this project to show how these topics all fit together in a singular project as a whole. Together these illustrate a polished product that is secure for managing user data and providing a meaningful and reliable tool within a modern, easy to use interface. MyMessierTracker is a full-stack Flask + PostgreSQL web app that lets you catalog your captures of the Messier DSOs (deep sky objects), upload a photo, tag the object, add notes, and track progress across all 110 objects with clean analytics and visuals. It also includes real catalog data (object types, RA/Dec location, magnitude) with rarity scores and progress metrics. It aims to help users track and journal their Messier-object observations while inspiring astrophotographers to continue gazing upward and capturing the wonders of the night sky. 
+I chose to develop this project to show how these topics all fit together in a singular project as a whole. Together these illustrate a polished product that is secure for managing user data and providing a meaningful and reliable tool within a modern, easy to use interface. MyMessierTracker is a full-stack Flask + PostgreSQL web app that lets you catalog your captures of the Messier DSOs (deep-sky objects), upload a photo, tag the object, add notes, and track progress across all 110 objects with clean analytics and visuals. It also includes real catalog data (object types, RA/Dec location, magnitude) with rarity scores and progress metrics. It aims to help users track and journal their Messier-object observations while inspiring astrophotographers to continue gazing upward and capturing the wonders of the night sky. 
 
-You can access <a href="https://mymessiertracker.com" target="_blank" rel="noopener"><strong>My Messier Tracker</strong></a> by creating your own account or exploring it with some data already populated for your convinience by using the following demo account creditials: EMAIL=demo@pending.com and PW=demo1.
+You can access <a href="https://mymessiertracker.com" target="_blank" rel="noopener"><strong>My Messier Tracker</strong></a> by creating your own account or exploring it with some data already populated for your convenience by using the following demo account credentials: EMAIL=demo@mymessiertracker.com and PW=demo1.
 
 ## Code Review
 Here I discuss the code behind an early version of the web app, the structure of the database and the planned development of enhancements. Below you can also find the code files for this earlier version as well as the code files after the enhancements were published.
@@ -75,16 +75,16 @@ Here I discuss the code behind an early version of the web app, the structure of
 ## Enhancement Narratives
 
 ### Software Design and Engineering: Implementing Account Deletion Functionality
-<p>I implemented a secure “Delete My Account” flow that permanently removes a user and all related data, aligning the app with privacy best practices (<a href="https://gdpr-info.eu/art-17-gdpr/" target="_blank" rel="noopener">Right to Erasure</a>) while keeping the codebase lean and maintainable.</p>
+<p>I implemented a secure “Delete My Account” flow that permanently removes a user and all related data, aligning the app with privacy best practices (<a href="https://gdpr-info.eu/art-17-gdpr/" target="_blank" rel="noopener">Right to Erasure</a>) while keeping the codebase lean and maintainable. *Please note that if you are using the demo account proeviously provided and want to test this functionality that it will delete the demo account so you may want to explore the other enhancements frst with this demo data before doing so.* </p>
 
 - A user can choose to delete account data from their profile menu.
 <p align="center">
-  <img width="319" height="251" alt="image" src="https://github.com/user-attachments/assets/60925572-0c4a-4f4f-a259-751058d9a64c" alt="image" width="300" style="height:auto;" />
+  <img src="https://github.com/user-attachments/assets/60925572-0c4a-4f4f-a259-751058d9a64c" alt="image" width="300" style="height:auto;" />
 </p>
 
 - Here they will be given a clear warning that this action is final and irreversible. A password is required to confirm this decision.
 <p align="center">
-  <img width="319" height="251" alt="image" src="https://github.com/user-attachments/assets/348da4aa-57a4-4b68-97ee-c8774b502628" alt="image" width="360" style="height:auto;"/>
+  <img src="https://github.com/user-attachments/assets/348da4aa-57a4-4b68-97ee-c8774b502628" alt="image" width="360" style="height:auto;"/>
 </p>
 
 - Once they enter their password then all data is deleted in proper order through a cascading SQL structure that also collects all files stored and later deletes those files as well once the database records are removed.
@@ -158,7 +158,7 @@ def account_delete():
 ### Algorithms and Data Structures: Implementing A Rarity Score Metric
 <p>This enhancement included generating an efficient computation for identifying the object rarity across all journals of all users. Here I focused on data structures and algorithms where I designed an object rarity metric to help encourage users to keep logging their observations. The goal was to make it fun through tooltips to help quickly identify some of the most popular objects that the user has not yet collected as well as reward them in their journal with a star when they have captured something fewer users have. </p>
 
--	A new database view leveraging indexes and joins was created that computes the rarity of each object in one grouped process over user_object_images and single user counts. This avoids counting per object/N+1 queries in SQL or inefficient loops in Python. This essentially results in \(O(U+I+ M\log M)\) where U indicates the rows in the users table, I as rows in user_object_images and M as the rows in the messier_objects table. Since M is constant at 110, this can simplify to O(U+I) and \(O(1)\) in memory so it’s an efficient, speedy and resource friendly algorithm to compute this rarity metric.
+-	A new database view leveraging indexes and joins was created that computes the rarity of each object in one grouped process over `user_object_images` and distinct user counts. This avoids per-object (`N+1`) SQL scans or Python loops. The complexity is `O(U + I + M·log M)` since `M = 110` is constant, it reduces to `O(U + I)` time and `O(1)` space.
   
 ```sql
 WITH total_users AS (SELECT count(*)::numeric AS total_users
@@ -225,9 +225,9 @@ capture_next_galaxy = [{
     for r in cur.fetchall()]
 ```
 -	These tooltips were then added to the index.html file and customized to be easily read and understood by the user.
--	The user can now mouseover every chart on the page to get a list of the ‘Top 3’ objects remaining that are most popular in each category (or overall). This is sorted by most popular descending. *Please note that the values on these tooltips may seem too round and consistent, that is becuase there are not that many usre accounts in the system, but as the user base grows these numbers would start to appear more realistic*.
+-	The user can now mouseover every chart on the page to get a list of the ‘Top 3’ objects remaining that are most popular in each category (or overall). This is sorted by most popular descending. *Please note that the values on these tooltips may seem too round and consistent, that is because there are not that many user accounts in the system, but as the user base grows these numbers would start to appear more realistic*.
 <p align="center">
-  <img alt="image" src="https://github.com/user-attachments/assets/85bfba2d-694a-4589-b493-11ddf412e2e2" alt="image" width="420" style="height:auto;"/>
+  <img alt="image" src="https://github.com/user-attachments/assets/85bfba2d-694a-4589-b493-11ddf412e2e2" alt="image" width="520" style="height:auto;"/>
 </p>
 
 - And once the user has captured all objects in a category their mouseover will update to display a ‘Congrats’ message.
@@ -243,7 +243,7 @@ capture_next_galaxy = [{
 <p>Here I completed the CRUD operations by adding functionality for the user to edit and remove journal entries. The user could already create records by adding new object entries to their Messier Journal and inserting them into the database and they could also read from the database all of the data they had previously loaded, plus some additional object information. However, they were unable to edit their entries or completely remove an entry until this enhancement. Even though this enhancement was focused on databases, all of my enhancements have had a heavy focus on proper database schema design, scalability and ensuring that the application has secure interactions with the database.</p>
 
 <p align="center">
-  <img alt="image" src="https://github.com/user-attachments/assets/cc55fa41-e142-4c3a-b9f5-c85b03939d25" alt="image" width="390" style="height:auto;"/>
+  <img alt="image" src="https://github.com/user-attachments/assets/cc55fa41-e142-4c3a-b9f5-c85b03939d25" alt="image" width="500" style="height:auto;"/>
 </p>
 
 <p>I selected this enhancement to showcase a secure and computationally efficient mindset when designing and interacting with databases. When a user clicks on either edit or delete buttons, the system collects their user_id and entry_id as variables to be used in the respective queries that will ensure the correct record is being edited or deleted. This setup will also handle in cases where there may be a system error and will not allow any further steps in the process to take place if the entry id cannot be confirmed.</p>
@@ -267,10 +267,10 @@ capture_next_galaxy = [{
 - If the user clicks on the edit icon then the user get the option to edit one or all elements of their original entry
 
 <p align="center">
-  <img alt="image" src="https://github.com/user-attachments/assets/cc55fa41-e142-4c3a-b9f5-c85b03939d25" alt="image" width="390" style="height:auto;"/>
+  <img alt="image" src="https://github.com/user-attachments/assets/cc55fa41-e142-4c3a-b9f5-c85b03939d25" alt="image" width="500" style="height:auto;"/>
 </p>
 
-- One thing I came across here was needing to make sure that I also passed all of the previous data elements that were loaded into the system already instead of blank by default, else when the user when to save their entry but say only updated the date field, the the journal notes would be completely erased as the original notes were not persisting. However, I made sure to make that change and as you can see in the image above these are the previous values pop-up correctly allowing the user to review their data before saving any changes to ensure nothing is lost in the process. Once the user has confirmed their changes, then the system performs an UPDATE statement and brings the user back to their dashboard.
+- One thing I came across here was needing to make sure that I also passed all of the previous data elements that were loaded into the system already instead of blank by default, else when the user when to save their entry but say only updated the date field, the journal notes would be completely erased as the original notes were not persisting. However, I made sure to make that change and as you can see in the image above these are the previous values pop-up correctly allowing the user to review their data before saving any changes to ensure nothing is lost in the process. Once the user has confirmed their changes, then the system performs an UPDATE statement and brings the user back to their dashboard.
 
 ```python
 # update date/notes and get updated timestamp
@@ -285,7 +285,7 @@ capture_next_galaxy = [{
 
 - If the user clicks on the delete icon then they are prompted with a warning similar to the user account deletion process for consistency. This ensures that they are well-informed that this action is permanent and irreversible.
 <p align="center">
-  <img alt="image" src="https://github.com/user-attachments/assets/46779a62-2abc-4a6e-b7f8-1c79d8f906aa" alt="image" width="390" style="height:auto;"/>
+  <img alt="image" src="https://github.com/user-attachments/assets/46779a62-2abc-4a6e-b7f8-1c79d8f906aa" alt="image" width="500" style="height:auto;"/>
 </p>
 
 
@@ -312,13 +312,13 @@ capture_next_galaxy = [{
                 (img_id, user_id))
     conn.commit()
 ```
-- Then it will also ensure the correponding img is deleted from the file storage as well
+- Then it ensures the corresponding img is deleted from the file storage as well
 
 ```python
     # DELETE FROM FILE STORAGE
     # TODO remove image file from file storage
     try:
-        # updated to be platform agnositic for web service deployment
+        # updated to be platform agnostic for web service deployment
         # TODO: VALIDATE
         p = (UPLOAD_DIR / img_key)
         if p.exists():
@@ -333,4 +333,4 @@ capture_next_galaxy = [{
 <p align="center">
   <img alt="image" src="https://github.com/user-attachments/assets/a1cff61c-3dae-4cf0-897d-ac81f27dd69b" alt="image" width="360" style="height:auto;"/>
 </p>
-Thank you for taking the time to view my project. There is so much more I would like to add to it in the future! If you have any questions or suggestions for future enhancements please feel free to reach out to me at audrey.weaver00@live.com.
+Thank you for taking the time to view my project. There is so much more I would like to add to it in the future! If you have any questions or suggestions for future enhancements please feel free to reach out to me at audrey․weaver00(at)live․com.
