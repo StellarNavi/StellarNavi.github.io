@@ -79,11 +79,11 @@ Here I discuss the code behind an early version of the web app, the structure of
 ### Software Design and Engineering: Implementing Account Deletion Functionality
 <p>I implemented a secure “Delete My Account” flow that permanently removes a user and all related data, aligning the app with privacy best practices (<a href="https://gdpr-info.eu/art-17-gdpr/" target="_blank" rel="noopener">Right to Erasure</a>) while keeping the codebase lean and maintainable.</p>
 
-* 1: A user can choose to delete account data from their profile menu.
-<p> align="center" <img width="319" height="251" alt="image" src="https://github.com/user-attachments/assets/60925572-0c4a-4f4f-a259-751058d9a64c" /> </p>
-* 2: Here they will be given a clear warning that this action is final and irreversible. A password is required to confirm this decision.
-<img width="862" height="577" alt="image" src="https://github.com/user-attachments/assets/348da4aa-57a4-4b68-97ee-c8774b502628" />
-* 3: Once they enter their password then all data is deleted in proper order through a cascading SQL structure that also collects all files stored and later deletes those files as well once the database records are removed.
+- 1: A user can choose to delete account data from their profile menu.
+<p> align="center" <img width="319" height="251" alt="image" src="https://github.com/user-attachments/assets/60925572-0c4a-4f4f-a259-751058d9a64c"> </p>
+- 2: Here they will be given a clear warning that this action is final and irreversible. A password is required to confirm this decision.
+<p> align="center"  <img width="862" height="577" alt="image" src="https://github.com/user-attachments/assets/348da4aa-57a4-4b68-97ee-c8774b502628"> <p/>
+- 3: Once they enter their password then all data is deleted in proper order through a cascading SQL structure that also collects all files stored and later deletes those files as well once the database records are removed.
 
 ```python
 # DELETE ACCOUNT PAGE VIEW -------------------------------------------------------------------------
