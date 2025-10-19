@@ -9,7 +9,7 @@
 
 
 #### What is MyMessierTracker?
-MyMessierTracker is a full-stack Flask + PostgreSQL web app that lets you catalog your Messier captures, upload a photo, tag the object, add notes, and track progress across all 110 objects with clean analytics and visuals. It also includes real catalog data (object types, RA/Dec location, magnitude) with rarity scores and progress metrics. It aims to help users track and journal their Messier-object observations while inspiring astrophotographers to continue gazing upward and capturing the wonders of the night sky.
+MyMessierTracker is a full-stack Flask + PostgreSQL web app that lets you catalog your captures of the Messier DSOs (deep sky objects), upload a photo, tag the object, add notes, and track progress across all 110 objects with clean analytics and visuals. It also includes real catalog data (object types, RA/Dec location, magnitude) with rarity scores and progress metrics. It aims to help users track and journal their Messier-object observations while inspiring astrophotographers to continue gazing upward and capturing the wonders of the night sky.
 
 You can access <a href="https://mymessiertracker.com" target="_blank" rel="noopener"><strong>My Messier Tracker</strong></a> by creating your own account or exploring it with some data already populated for your convinience by using the following demo account creditials: UN=demo@pending.com and PW=123.
 
@@ -233,4 +233,88 @@ capture_next_galaxy = [{
 <img alt="image" src="https://github.com/user-attachments/assets/2a171201-f58a-4fdb-8c49-703e1599dfc4" />
 </p>
 
+### Databases: Complete CRUD Operations 
+<p>Here I completed the CRUD operations by adding functionality for the user to edit and remove journal entries. The user could already create records by adding new object entries to their Messier Journal and inserting them into the database and they could also read from the database all of the data they had previously loaded, plus some additional object information. However, they were unable to edit their entries or completely remove an entry until this enhancement. Even though this enhancement was focused on databases, all of my enhancements have had a heavy focus on proper database schema design, scalability and ensuring that the application has secure interactions with the database.</p>
 
+
+<img width="1860" height="969" alt="image" src="https://github.com/user-attachments/assets/cc55fa41-e142-4c3a-b9f5-c85b03939d25" />
+
+<p>I selected this enhancement to showcase a secure and computationally efficient mindset when designing and interacting with databases. When a user clicks on either edit or delete buttons, the system collects their user_id and entry_id as variables to be used in the respective queries that will ensure the correct record is being edited or deleted. This setup will also handle in cases where there may be a system error and will not allow any further steps in the process to take place if the entry id cannot be confirmed.</p>
+
+```python
+  # TODO Journal Entry Delete function ---------------------------------------------------------------
+  @app.route("/journal/delete", methods=["POST"])
+  @login_required
+  def journal_delete():
+      user_id = str(current_user.id)
+      entry_id = request.form.get("entry_id", "")
+
+    # if there is an issue collecting the entry id then flash error and send back to dashboard
+    if not entry_id:
+        flash("Missing entry id.", "danger")
+        return redirect(url_for("dashboard"))
+    
+    conn = get_db_conn()
+    cur = conn.cursor()
+```
+- If the user clicks on the edit icon then the user get the option to edit one or all elements of their original entry
+
+- <img width="1115" height="765" alt="image" src="https://github.com/user-attachments/assets/11c7cceb-7390-4233-8fae-02ad35687df5" />
+
+- One thing I came across here was needing to make sure that I also passed all of the previous data elements that were loaded into the system already instead of blank by default, else when the user when to save their entry but say only updated the date field, the the journal notes would be completely erased as the original notes were not persisting. However, I made sure to make that change and as you can see in the image above these are the previous values pop-up correctly allowing the user to review their data before saving any changes to ensure nothing is lost in the process. Once the user has confirmed their changes, then the system performs an UPDATE statement and brings the user back to their dashboard.
+
+```python
+# update date/notes and get updated timestamp
+            cur.execute("""
+                UPDATE public.journal_entries
+                SET observed_date = %s,
+                    body = %s,
+                    updated_at = NOW()
+                WHERE id = %s AND user_id = %s
+            """, (obs_date, body_text, entry_id, user_id))
+```
+
+- If the user clicks on the delete icon then they are prompted with a warning similar to the user account deletion process for consistency. This ensures that they are well-informed that this action is permanent and irreversible.
+<img width="1456" height="555" alt="image" src="https://github.com/user-attachments/assets/46779a62-2abc-4a6e-b7f8-1c79d8f906aa" />
+- The code for this process collects the entry id and passes it along with the user id within a DELETE statement to remove the journal entry record as well as related records for images then also removes the  image from storage.
+```pyyhon
+    # DELETE ALL DATABASE RECORDS
+    # delete the journal entry
+    cur.execute("""DELETE 
+                   FROM public.journal_entries 
+                   WHERE id = %s AND user_id = %s ;""",
+                (entry_id, user_id))
+
+
+    # TODO remove record from user_object_images
+    cur.execute("""DELETE 
+                FROM public.user_object_images 
+                WHERE image_id = %s AND user_id = %s ;""",
+                (img_id, user_id))
+
+    # TODO remove record from images
+    cur.execute("""DELETE 
+                FROM public.images 
+                WHERE id = %s AND user_id = %s ;""",
+                (img_id, user_id))
+    conn.commit()
+```
+- Then it will also ensure the correponding img is deleted from the file storage as well
+
+```python
+    # DELETE FROM FILE STORAGE
+    # TODO remove image file from file storage
+    try:
+        # updated to be platform agnositic for web service deployment
+        # TODO: VALIDATE
+        p = (UPLOAD_DIR / img_key)
+        if p.exists():
+            p.unlink()
+    except Exception:
+        app.logger.exception("Failed to delete file %s", p)
+
+    return redirect(url_for("dashboard"))
+```
+
+## Thank You
+Thank you for taking the time to view my project. There is so much more I would like to add to it! If you have any questions or suggestions for future enhancements please feel free to reach out to me at audrey.weaver00@live.com.
