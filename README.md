@@ -144,15 +144,15 @@ def account_delete():
     return render_template("post_delete.html")
   ```
     
-- The completion of this process is confirmed to the user once complete.
+- This process is confirmed to the user once complete.
 <p align="center">
-  <img width="319" height="251" alt="image" src="https://github.com/user-attachments/assets/8627c18c-56bf-489b-a715-bf1ffdc9f3f6" />
+  <img alt="image" src="https://github.com/user-attachments/assets/8627c18c-56bf-489b-a715-bf1ffdc9f3f6" />
 </p>
 
 ### Algorithms and Data Structures: Implementing A Rarity Score Metric
 <p>included generating an efficient computation for identifying the object rarity across all journals of all users.</p>
 
--	A new database view leveraging indexes and joins was created that computes the rarity of each object in one grouped process over user_object_images and single user counts. This avoids counting per object/N+1 queries in SQL or inefficient loops in Python. This essentially results in \O(U+I+ M\log M)\) where U indicates the rows in the users table, I as rows in user_object_images and M as the rows in the messier_objects table. Since M is constant at 110, this can simplify to O(U+I) and \(O(1)\) in memory so it’s an efficient, speedy and resource friendly algorithm to compute this rarity metric.
+-	A new database view leveraging indexes and joins was created that computes the rarity of each object in one grouped process over user_object_images and single user counts. This avoids counting per object/N+1 queries in SQL or inefficient loops in Python. This essentially results in \(O(U+I+ M\log M)\) where U indicates the rows in the users table, I as rows in user_object_images and M as the rows in the messier_objects table. Since M is constant at 110, this can simplify to O(U+I) and \(O(1)\) in memory so it’s an efficient, speedy and resource friendly algorithm to compute this rarity metric.
   
 ```sql
 WITH total_users AS (SELECT count(*)::numeric AS total_users
@@ -221,16 +221,16 @@ capture_next_galaxy = [{
 -	These tooltips were then added to the index.html file and customized to be easily read and understood by the user.
 -	The user can now mouseover every chart on the page to get a list of the ‘Top 3’ objects remaining that are most popular in each category (or overall). This is sorted by most popular descending.
 <p align="center">
-  <img width="319" height="251" alt="image" src="https://github.com/user-attachments/assets/85bfba2d-694a-4589-b493-11ddf412e2e2" />
+  <img alt="image" src="https://github.com/user-attachments/assets/85bfba2d-694a-4589-b493-11ddf412e2e2" />
 </p>
 
 - And once the user has captured all objects in a category their mouseover will update to display a ‘Congrats’ message.
 <p align="center">
-  <img width="319" height="251" alt="image" src="https://github.com/user-attachments/assets/b6f8a58b-bb1b-4559-bee0-abad4e43acf8" />
+  <img alt="image" src="https://github.com/user-attachments/assets/b6f8a58b-bb1b-4559-bee0-abad4e43acf8" />
 </p>
 - Additionally, the user can also see their top most rare objects that they have already captured (with the constraint that the objects rarity is below 50%)
 <p align="center">
-<img width="319" height="251" alt="image" src="https://github.com/user-attachments/assets/2a171201-f58a-4fdb-8c49-703e1599dfc4" />
+<img alt="image" src="https://github.com/user-attachments/assets/2a171201-f58a-4fdb-8c49-703e1599dfc4" />
 </p>
 
 
