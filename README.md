@@ -52,7 +52,7 @@ Here I discuss the code behind an early version of the web app, the structure of
 
 
 
-## Program-wide self-assessment
+### Program-wide self-assessment
 * Collaborating in a team environment: Used feature branches (enh1/2/3 → dev → main), performed merges with conflict resolution, and documented changes for review, these are all habits that translate directly into a real-world team workflows.
 * Communicating with stakeholders: Explain requirements and trade-offs in a way that both technical and non-technical audiences can follow (examples: why a normalized schema + views are more efficient than ad-hoc queries, why secure uploads matter and practiced maintaining concise READMEs and other documentation).
 * Data structures & algorithms: Applied indexing strategies, window functions, choosing the best algorithm for the need and implementing efficient server-side computations to keep UIs snappy and real-time metrics accurate at scale.
@@ -60,12 +60,11 @@ Here I discuss the code behind an early version of the web app, the structure of
 * Security mindset: Practiced a security mindset throughout the entire process with strongly hashed credentials, validated inputs, safe file paths, secret management and considered abuse cases such as path traversal, and CSRF (cross-site request forgery) through requiring the users passwords at destructive action requests even thorugh authentication during the current session is already active.
 
 ### How the artifact enhancements fit together
-  I chose to develop and enhance a singluar project to show how these topics all fit together in a project as a whole.
+  I chose to develop and enhance a singluar project to show how these topics all fit together in a project as a whole. Together these illustrate a polished product that is secure and trustworthy for managing user data and providing a meaningful and reliable tool within a modern and easy to use interface.
   
-  * Authentication & Accounts (Enhancement 1): Secure login/registration establishes identity and protects user data.
-  * Analytics & Rarity Metrics (Enhancement 2): SQL views and calculated fields power charts/insights visible in the dashboard.
-  * Edit/Delete & Journal UX (Enhancement 3): Robust CRUD with safe image handling and consistent UI patterns completes the end-to-end user workflow.
-  * Together they illustrate a coherent product: secure users, trustworthy data, and a polished interface deployed like real software.
+  * Engineering Ethical and Secure Account Management (Enhancement 1): Secure login/registration establishes identity and protects user data.
+  * Providing Robust & Efficient Analytics & Metrics (Enhancement 2): SQL views and calculated fields power charts/insights visible in the dashboard.
+  * Implementing Scalable CRUD Operations (Enhancement 3): Robust CRUD with safe image handling and consistent UI patterns completes the end-to-end user workflow.
 
 ## Enhancement Narratives
 
@@ -222,17 +221,16 @@ capture_next_galaxy = [{
 -	These tooltips were then added to the index.html file and customized to be easily read and understood by the user.
 -	The user can now mouseover every chart on the page to get a list of the ‘Top 3’ objects remaining that are most popular in each category (or overall). This is sorted by most popular descending.
 <p align="center">
-  <img width="319" height="251" alt="image" src="[https://github.com/user-attachments/assets/8627c18c-56bf-489b-a715-bf1ffdc9f3f6](https://github.com/user-attachments/assets/85bfba2d-694a-4589-b493-11ddf412e2e2)" />
+  <img width="319" height="251" alt="image" src="https://github.com/user-attachments/assets/85bfba2d-694a-4589-b493-11ddf412e2e2" />
 </p>
 
-- 5)	And once the user has captured all objects in a category their mouseover will update to display a ‘Congrats’ message.
+- And once the user has captured all objects in a category their mouseover will update to display a ‘Congrats’ message.
 <p align="center">
   <img width="319" height="251" alt="image" src="https://github.com/user-attachments/assets/b6f8a58b-bb1b-4559-bee0-abad4e43acf8" />
 </p>
-     
-  6)	Additionally, the user can also see their top most rare objects that they have already captured (with the constraint that the objects rarity is below 50%)
+- Additionally, the user can also see their top most rare objects that they have already captured (with the constraint that the objects rarity is below 50%)
 <p align="center">
-<img width="319" height="251" alt="image" src="[https://github.com/user-attachments/assets/b6f8a58b-bb1b-4559-bee0-abad4e43acf8](https://github.com/user-attachments/assets/2a171201-f58a-4fdb-8c49-703e1599dfc4)" />
+<img width="319" height="251" alt="image" src="https://github.com/user-attachments/assets/2a171201-f58a-4fdb-8c49-703e1599dfc4" />
 </p>
 
 
