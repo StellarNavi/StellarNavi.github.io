@@ -1,11 +1,9 @@
 #this is in progress....
 <p>Hello 👋 I’m <strong>Audrey Weaver</strong>, and I am completing my <strong>Bachelor of Science in Computer Science</strong> with a concentration in <strong>Data Analytics</strong>. Over the course of this program, I have developed both the technical depth and professional confidence to design, build, troubleshoot, and deliver impactful software solutions.</p>
 
-<p>This ePortfolio, which features my custom capstone project <a href="https://mymessiertracker.com" target="_blank" rel="noopener"><strong>My Messier Tracker</strong></a>, demonstrates my ability to apply computer science principles to solve meaningful problems through full-stack development, database engineering, and data visualization. Early coursework in algorithms and data structures strengthened my logical problem-solving foundation, while later courses emphasized secure, modular software and well-documented database design.</p>
+<p>This ePortfolio, which features my custom capstone project <a href="https://mymessiertracker.com" target="_blank" rel="noopener"><strong>My Messier Tracker</strong></a>, demonstrates my ability to apply computer science principles to solve meaningful problems through full-stack development, database engineering, and data visualization. Early coursework in algorithms and data structures strengthened my logical problem-solving foundation, while later courses emphasized secure, modular software and well-documented code. This project integrates a PostgreSQL database, Flask back end, and interactive front end featuring real user data and real-time visualizations. Through this process, I demonstrated proficiency in software engineering, database optimization, and secure application design.</p>
 
-<p>The <em>My Messier Tracker</em> project is a culmination of these skills. It is a full-stack web application that allows users to track, document, and analyze their astrophotography progress across the Messier catalog. The project integrates a PostgreSQL database, Flask back end, and interactive front end featuring real user data and visualizations. Through this process, I demonstrated proficiency in software engineering, database optimization, user authentication, and security design.</p>
-
-<p>Collaboration and communication have been central to my success in this program. I have worked in agile-style environments, managed code versions through Git and GitHub, and practiced clear documentation through peer reviews and project artifacts. These experiences have prepared me to thrive in dynamic, cross-functional teams and to communicate technical insights effectively to both technical and non-technical audiences.</p>
+<p>Collaboration and communication have been central to my success in this program. I have worked in agile-style environments, managed code versions through Git and GitHub, and practiced clear documentation, both written and verbal. These experiences have prepared me to thrive in dynamic, cross-functional teams and to communicate technical insights effectively to both technical and non-technical audiences.</p>
 
 <p>My ePortfolio showcases three major enhancements representing the core areas of computer science: <strong>software engineering</strong>, <strong>algorithms and data structures</strong>, and <strong>databases</strong>. Collectively, these artifacts demonstrate my ability to turn well-designed ideas into production-ready applications that deliver value. As I enter the next stage of my career, I bring a passion for data-driven problem solving, continuous learning, and building solutions that balance innovation with security and performance.</p>
 
@@ -13,12 +11,7 @@
 #### What is MyMessierTracker?
 MyMessierTracker is a full-stack Flask + PostgreSQL web app that lets you catalog your Messier captures, upload a photo, tag the object, add notes, and track progress across all 110 objects with clean analytics and visuals. It also includes real catalog data (object types, RA/Dec location, magnitude) with rarity scores and progress metrics. It aims to help users track and journal their Messier-object observations while inspiring astrophotographers to continue gazing upward and capturing the wonders of the night sky.
 
-You can access <a href="https://mymessiertracker.com" target="_blank" rel="noopener"><strong>My Messier Tracker</strong></a> by creating your own account or exploring it with some data already populated for your convinience by using the demo account creditials below:
-
-<p align="center">
-UN: demo@pending.com
-PW: 123 
-</p>
+You can access <a href="https://mymessiertracker.com" target="_blank" rel="noopener"><strong>My Messier Tracker</strong></a> by creating your own account or exploring it with some data already populated for your convinience by using the following demo account creditials: UN=demo@pending.com and PW=123.
 
 ## Code Review
 Here I discuss the code behind an early version of the web app, the structure of the database and the planned development of enhancements. Below you can also find the code files for this earlier version as well as the code files after the enhancements were published.
@@ -36,7 +29,7 @@ Here I discuss the code behind an early version of the web app, the structure of
 
 <p></p>
 
-<p align="center">You can find my original code and enhanced code files here.</p>
+<p align="center">You can find my original and enhanced code files here.</p>
 
 <div class="d-flex justify-content-center gap-2 flex-wrap"
      style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;width:100%;margin:16px 0;">
@@ -157,5 +150,89 @@ def account_delete():
   <img width="319" height="251" alt="image" src="https://github.com/user-attachments/assets/8627c18c-56bf-489b-a715-bf1ffdc9f3f6" />
 </p>
 
+### Algorithms and Data Structures: Implementing A Rarity Score Metric
+<p>included generating an efficient computation for identifying the object rarity across all journals of all users.</p>
 
-### The artifact used for all three enhancements that I will discuss here was my custom full-stack web application - 'My Messier Tracker'
+-	A new database view leveraging indexes and joins was created that computes the rarity of each object in one grouped process over user_object_images and single user counts. This avoids counting per object/N+1 queries in SQL or inefficient loops in Python. This essentially results in \O(U+I+ M\log M)\) where U indicates the rows in the users table, I as rows in user_object_images and M as the rows in the messier_objects table. Since M is constant at 110, this can simplify to O(U+I) and \(O(1)\) in memory so it’s an efficient, speedy and resource friendly algorithm to compute this rarity metric.
+  
+```sql
+WITH total_users AS (SELECT count(*)::numeric AS total_users
+                     FROM users),
+     obj AS (SELECT mo.id                                AS messier_id,
+                    mo.messier_number,
+                    mo.common_name,
+                    mo.object_type,
+                    count(DISTINCT uoi.user_id)::numeric AS user_ct
+             FROM messier_objects mo
+                      LEFT JOIN user_object_images uoi ON uoi.messier_id = mo.id
+             GROUP BY mo.id, mo.messier_number, mo.common_name)
+SELECT o.messier_id,
+       o.object_type,
+       (o.messier_number || ': '::text) || o.common_name AS object,
+       CASE
+           WHEN t.total_users = 0::numeric THEN 0::numeric
+           ELSE round(100::numeric * o.user_ct / t.total_users, 2)
+           END                                           AS rarity_pct
+FROM obj o
+         CROSS JOIN total_users t
+ORDER BY (
+             CASE
+                 WHEN t.total_users = 0::numeric THEN 0::numeric
+                 ELSE round(100::numeric * o.user_ct / t.total_users, 2)
+                 END) DESC
+```
+-	Then since this was efficiently handled in the database portion of the app, the top N categorical queries can reference that view, pass the parameterized user id, sort and limit to N.
+
+```python
+# progress bar (top 3 overall)
+cur.execute("""
+    SELECT messier_id, object_type, object, rarity_pct
+    FROM public.v_object_rarity
+    WHERE messier_id NOT IN (
+        SELECT uoi.messier_id
+        FROM public.user_object_images AS uoi
+        WHERE uoi.user_id = %s)
+    ORDER BY rarity_pct DESC
+    LIMIT 3;""", (user_id,))
+capture_next = [{
+        "messier_id": str(r[0]),
+        "object_type": r[1],
+        "object": r[2],
+        "rarity_pct": r[3]
+    } for r in cur.fetchall()]
+
+# donut 1 (top 3 galaxies)
+cur.execute("""
+    SELECT messier_id, object_type, object, rarity_pct
+    FROM public.v_object_rarity
+    WHERE messier_id NOT IN (
+        SELECT uoi.messier_id
+        FROM public.user_object_images AS uoi
+        WHERE uoi.user_id = %s)
+      AND object_type = 'Galaxy'
+    ORDER BY rarity_pct DESC
+    LIMIT 3;""", (user_id,))
+capture_next_galaxy = [{
+        "messier_id": str(r[0]),
+        "object_type": r[1],
+        "object": r[2],
+        "rarity_pct": r[3]}
+    for r in cur.fetchall()]
+```
+-	These tooltips were then added to the index.html file and customized to be easily read and understood by the user.
+-	The user can now mouseover every chart on the page to get a list of the ‘Top 3’ objects remaining that are most popular in each category (or overall). This is sorted by most popular descending.
+<p align="center">
+  <img width="319" height="251" alt="image" src="[https://github.com/user-attachments/assets/8627c18c-56bf-489b-a715-bf1ffdc9f3f6](https://github.com/user-attachments/assets/85bfba2d-694a-4589-b493-11ddf412e2e2)" />
+</p>
+
+- 5)	And once the user has captured all objects in a category their mouseover will update to display a ‘Congrats’ message.
+<p align="center">
+  <img width="319" height="251" alt="image" src="https://github.com/user-attachments/assets/b6f8a58b-bb1b-4559-bee0-abad4e43acf8" />
+</p>
+     
+  6)	Additionally, the user can also see their top most rare objects that they have already captured (with the constraint that the objects rarity is below 50%)
+<p align="center">
+<img width="319" height="251" alt="image" src="[https://github.com/user-attachments/assets/b6f8a58b-bb1b-4559-bee0-abad4e43acf8](https://github.com/user-attachments/assets/2a171201-f58a-4fdb-8c49-703e1599dfc4)" />
+</p>
+
+
