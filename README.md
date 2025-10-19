@@ -267,7 +267,7 @@ capture_next_galaxy = [{
 - If the user clicks on the edit icon then the user get the option to edit one or all elements of their original entry
 
 <p align="center">
-  <img alt="image" src="https://github.com/user-attachments/assets/cc55fa41-e142-4c3a-b9f5-c85b03939d25" alt="image" width="500" style="height:auto;"/>
+  <img alt="image" src="https://github.com/user-attachments/assets/fa854de4-3517-4647-8e3b-50f3ea24518e" alt="image" width="500" style="height:auto;"/>
 </p>
 
 - One thing I came across here was needing to make sure that I also passed all of the previous data elements that were loaded into the system already instead of blank by default, else when the user when to save their entry but say only updated the date field, the journal notes would be completely erased as the original notes were not persisting. However, I made sure to make that change and as you can see in the image above these are the previous values pop-up correctly allowing the user to review their data before saving any changes to ensure nothing is lost in the process. Once the user has confirmed their changes, then the system performs an UPDATE statement and brings the user back to their dashboard.
@@ -291,7 +291,7 @@ capture_next_galaxy = [{
 
 - The code for this process collects the entry id and passes it along with the user id within a DELETE statement to remove the journal entry record as well as related records for images then also removes the  image from storage.
 ```python
-    # DELETE ALL DATABASE RECORDS
+    # DELETE ALL DATABASE RECORDS RELATED TO THAT ENTRY
     # delete the journal entry
     cur.execute("""DELETE 
                    FROM public.journal_entries 
@@ -312,7 +312,7 @@ capture_next_galaxy = [{
                 (img_id, user_id))
     conn.commit()
 ```
-- Then it ensures the corresponding img is deleted from the file storage as well
+- Then it ensures the corresponding image is also deleted from the file storage as well.
 
 ```python
     # DELETE FROM FILE STORAGE
