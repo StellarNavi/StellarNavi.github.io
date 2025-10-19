@@ -1,3 +1,12 @@
+## Table of Contents
+- [Overview](#professional-self-assessment)
+- [Code Review](#code-review)
+- [Enhancement Narratives](#enhancement-narratives)
+- [Enhancement 2 — Rarity Metric](#enhancement-2--rarity-metric)
+- [Enhancement 3 — Edit/Delete Records](#enhancement-3--editdelete-records)
+- [Setup](#setup)
+- [License](#license)
+
 ### Professional Self-Assessment
 
 <p>Hello 👋 I’m <strong>Audrey Weaver</strong>, and I am completing my <strong>Bachelor of Science in Computer Science</strong> with a concentration in <strong>Data Analytics</strong>. Over the course of this program, I have developed both the technical depth and professional confidence to design, build, troubleshoot, and deliver impactful software solutions.</p>
