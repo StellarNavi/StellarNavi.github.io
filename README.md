@@ -75,7 +75,8 @@ Here I discuss the code behind an early version of the web app, the structure of
 ## Enhancement Narratives
 
 ### Software Design and Engineering: Implementing Account Deletion Functionality
-<p>I implemented a secure “Delete My Account” flow that permanently removes a user and all related data, aligning the app with privacy best practices (<a href="https://gdpr-info.eu/art-17-gdpr/" target="_blank" rel="noopener">Right to Erasure</a>) while keeping the codebase lean and maintainable. *Please note that if you are using the demo account proeviously provided and want to test this functionality that it will delete the demo account so you may want to explore the other enhancements frst with this demo data before doing so.* </p>
+<p>I implemented a secure “Delete My Account” flow that permanently removes a user and all related data, aligning the app with privacy best practices (<a href="https://gdpr-info.eu/art-17-gdpr/" target="_blank" rel="noopener">Right to Erasure</a>) while keeping the codebase lean and maintainable. <em>Please note that if you are using the demo account previously provided and want to test this functionality, it will delete the demo account, so you may want to explore the other enhancements first with this demo data before doing so.</em>
+ </p>
 
 - A user can choose to delete account data from their profile menu.
 <p align="center">
